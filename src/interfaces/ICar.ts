@@ -11,6 +11,6 @@ const carZodSchema = vehicleZodSchema.merge(addCarZodSchema);
 type ICar = z.infer<typeof carZodSchema>;
 
 export {
-  // eslint-disable-next-line
   ICar,
+  carZodSchema,
 };

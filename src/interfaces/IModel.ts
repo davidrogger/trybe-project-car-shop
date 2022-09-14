@@ -1,4 +1,4 @@
-interface IModel<T> {
+export default interface IModel<T> {
   create(payload:T):Promise<T>;
   read():Promise<T[]>;
   readOne(id:string):Promise<T | null>;
@@ -8,6 +8,5 @@ interface IModel<T> {
 
 export {
   // A interface deve ser exportada com o nome de IModel e não deve ser exportada de forma padrão.
-  // eslint-disable-next-line
   IModel,
 };
