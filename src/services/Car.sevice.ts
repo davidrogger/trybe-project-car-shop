@@ -13,6 +13,10 @@ class CarService implements IService<ICar> {
 
     return this.car.create(checkPayload.data);
   }
+
+  async read():Promise<ICar[]> {
+    return this.car.read();
+  }
 }
 
 export default CarService;
