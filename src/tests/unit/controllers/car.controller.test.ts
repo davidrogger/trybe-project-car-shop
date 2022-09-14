@@ -16,8 +16,13 @@ import CarModel from '../../../models/Car.model';
 import CarService from '../../../services/Car.sevice';
 import { Request, Response } from 'express';
 
-describe('Rota "/cars"', () => {
+describe('Testing CarController', () => {
   afterEach(() => sinon.restore());
+
+  beforeEach(() => {
+    response.json = sinon.stub().returns(response);
+    response.status = sinon.stub().returns(response);
+  });
 
   const request = {} as Request;
   const response = {} as Response;
@@ -26,18 +31,25 @@ describe('Rota "/cars"', () => {
   const carService = new CarService(carModel);
   const carController = new CarController(carService);
 
-  describe('When add a car with success', () => {
-
+  describe('When requesting to add a car with success', () => {
     it('Should return the registered payload with an id and a response 201', async () => {
       sinon.stub(carService, 'create').resolves(carWithId)
       request.body = validCar;
-      response.json = sinon.stub().returns(response);
-      response.status = sinon.stub().returns(response);
 
       await carController.create(request, response);
       expect((response.status  as sinon.SinonStub).calledWith(201)).to.be.true;
       expect((response.json  as sinon.SinonStub).calledWith(carWithId)).to.be.true;
     });
 
+  });
+
+  describe('When requesting to get all cars in the route', () => {
+    it('Should return all the cars in the database and a response 200', async () => {
+      sinon.stub(carService, 'read').resolves([carWithId])
+
+      await carController.read(request, response);
+      expect((response.status  as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((response.json  as sinon.SinonStub).calledWith([carWithId])).to.be.true;
+    });
   });
 });
