@@ -19,7 +19,7 @@ describe('Rota "/cars"', () => {
 
   const carModel = new CarModel();
 
-  describe('When add a car with success', () => {
+  describe('When using POST to add a car with success', () => {
     it('Should return the registered payload with an id', async () => {
       sinon.stub(Model, 'create').resolves(carWithId);
 
@@ -27,5 +27,14 @@ describe('Rota "/cars"', () => {
       expect(addCarModel).to.be.deep.equal(carWithId);
     });
 
+  });
+
+  describe('When using GET to get all cars with success', () => {
+    it('Should return a list with all cars', async () => {
+      sinon.stub(Model, 'find').resolves([carWithId]);
+
+      const listCars = await carModel.read();
+      expect(listCars).to.be.equal([carWithId]);
+    });
   });
 });
