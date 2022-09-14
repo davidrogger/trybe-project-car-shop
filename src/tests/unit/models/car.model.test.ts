@@ -34,7 +34,7 @@ describe('Rota "/cars"', () => {
       sinon.stub(Model, 'find').resolves([carWithId]);
 
       const listCars = await carModel.read();
-      expect(listCars).to.be.equal([carWithId]);
+      expect(listCars).to.be.deep.equal([carWithId]);
     });
   });
 });
