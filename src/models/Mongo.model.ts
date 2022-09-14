@@ -12,6 +12,10 @@ class MongoModel<T> implements IModel<T> {
       ...payload,
     };
   }
+
+  public async read():Promise<T[]> {
+    return this.model.find();
+  }
 }
 
 export default MongoModel;
