@@ -7,7 +7,12 @@ class CarController {
 
   async create(req:Request & { body: ICar }, res:Response<ICar>) {
     const newCar = await this.service.create(req.body);
-    res.status(201).json(newCar);
+    return res.status(201).json(newCar);
+  }
+
+  async read(_req: Request, res:Response<ICar[]>) {
+    const listCar = await this.service.read();
+    return res.status(200).json(listCar);
   }
 }
 
