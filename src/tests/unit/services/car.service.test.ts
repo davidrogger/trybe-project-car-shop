@@ -91,7 +91,8 @@ describe('Testing CarService', () => {
 
     it('Should throw an error if not found', async () => {
       sinon.stub(mongoose, 'isValidObjectId').returns(true);
-      sinon.stub(carModel, 'readOne').resolves(null);
+      // sinon.stub(carZodSchema, 'safeParse').returns(zodParsedMock);
+      sinon.stub(carModel, 'update').resolves(null);
       let carNotFound;
       try {
         await carService.update('ID_NOT_FOUND', validUpdatedCar);
@@ -116,6 +117,7 @@ describe('Testing CarService', () => {
 
     it('Should throw an error if "payload" miss any field required to updated', async () => {
       sinon.stub(mongoose, 'isValidObjectId').returns(false);
+      // sinon.stub(carZodSchema, 'safeParse').returns(zodParsedMock);
       let invalidField;
       try {
         await carService.update('ID_INVALID', {});

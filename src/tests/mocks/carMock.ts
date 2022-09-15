@@ -31,5 +31,4 @@ export const updatedCarWithId = {
 export const zodParsedMock = {
   success: false,
   data: {},
-  error: 'ZodError'
 }

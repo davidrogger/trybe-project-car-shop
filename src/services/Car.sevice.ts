@@ -30,7 +30,17 @@ class CarService implements IService<ICar> {
   }
 
   public async update(id:string, payload:unknown):Promise<ICar> {
-    return;
+    if (!isValidObjectId(id)) throw new Error('invalidId');
+    
+    const payloadValidation = carZodSchema.safeParse(payload);
+
+    if (!payloadValidation.success) throw payloadValidation.error;
+
+    const updated = await this.car.update(id, payloadValidation.data);
+
+    if (!updated) throw new Error('NotFound');
+
+    return updated;
   }
 }
 
