@@ -68,7 +68,7 @@ describe('Testing CarController', () => {
 
   describe('When requesting to update a car by its "ID"', () => {
     it('Should return a car updated with a response 200', async () => {
-      sinon.stub(carService, 'update').resolves(updatedCar)
+      sinon.stub(carService, 'update').resolves(updatedCarWithId)
       request.params = { id: '4edd40c86762e0fb12000003' };
       request.body = updatedCar;
 

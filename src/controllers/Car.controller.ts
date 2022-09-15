@@ -21,7 +21,11 @@ class CarController {
   }
 
   async update(req: Request, res: Response<ICar>) {
-    
+    const { id } = req.params;
+    const payload = req.body;
+
+    const updatedCar = await this.service.update(id, payload);
+    res.status(200).json(updatedCar);
   }
 }
 
