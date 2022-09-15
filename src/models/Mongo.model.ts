@@ -16,6 +16,10 @@ class MongoModel<T> implements IModel<T> {
   public async read():Promise<T[]> {
     return this.model.find();
   }
+
+  public async readOne(id: string): Promise<T | null> {
+    
+  }
 }
 
 export default MongoModel;
