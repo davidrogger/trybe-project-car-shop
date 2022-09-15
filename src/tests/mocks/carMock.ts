@@ -14,7 +14,7 @@ export const carWithId = {
   ...validCar
 }
 
-export const updatedCar = {
+export const validUpdatedCar = {
   model: 'Uno da Escada',
   year: 1963,
   color: 'red',
@@ -25,5 +25,11 @@ export const updatedCar = {
 
 export const updatedCarWithId = {
   _id: '4edd40c86762e0fb12000003',
-  ...updatedCar
+  ...validUpdatedCar
+}
+
+export const zodParsedMock = {
+  success: false,
+  data: {},
+  error: 'ZodError'
 }

@@ -28,6 +28,10 @@ class CarService implements IService<ICar> {
 
     return carFound;
   }
+
+  public async update(id:string, payload:unknown):Promise<ICar> {
+    return;
+  }
 }
 
 export default CarService;

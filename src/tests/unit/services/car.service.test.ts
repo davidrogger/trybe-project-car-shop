@@ -9,11 +9,15 @@ import CarService from '../../../services/Car.sevice';
 import {
   validCar,
   carWithId,
+  updatedCarWithId,
+  validUpdatedCar,
+  zodParsedMock,
 } from '../../mocks/carMock';
 
 // External methods mocked
 import CarModel from '../../../models/Car.model';
 import mongoose from 'mongoose';
+import { carZodSchema } from '../../../interfaces/ICar'
 
 describe('Testing CarService', () => {
   afterEach(() => sinon.restore());
@@ -41,7 +45,7 @@ describe('Testing CarService', () => {
   });
 
   describe('When using service to get a car by its "ID"', () => {
-    it('Should return the car if found', async () => {
+    it('Should return the car when found', async () => {
       sinon.stub(mongoose, 'isValidObjectId').returns(true);
       sinon.stub(carModel, 'readOne').resolves(carWithId);
 
@@ -62,7 +66,7 @@ describe('Testing CarService', () => {
       expect(carNotFound).not.to.be.undefined;
     });
 
-    it('Should throw an error if the is invalid', async () => {
+    it('Should throw an error if the "ID" is invalid', async () => {
       sinon.stub(mongoose, 'isValidObjectId').returns(false);
       let invalidId;
       try {
@@ -72,6 +76,54 @@ describe('Testing CarService', () => {
       }
 
       expect(invalidId).not.to.be.undefined; 
+    });
+  });
+
+  describe('When using service to update a car by its "ID"', () => {
+    it('Should return the car updated when found', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(true);
+      // sinon.stub(carZodSchema, 'safeParse').returns(zodParsedMock);
+      sinon.stub(carModel, 'update').resolves(updatedCarWithId);
+
+      const carUpdated = await carService.update('ID_FOUND', validUpdatedCar);
+      expect(carUpdated).to.be.deep.equal(updatedCarWithId);
+    });
+
+    it('Should throw an error if not found', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(true);
+      sinon.stub(carModel, 'readOne').resolves(null);
+      let carNotFound;
+      try {
+        await carService.update('ID_NOT_FOUND', validUpdatedCar);
+      } catch (error:any) {
+        carNotFound = error;
+      }
+
+      expect(carNotFound).not.to.be.undefined;
+    });
+
+    it('Should throw an error if the "ID" is invalid', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(false);
+      let invalidId;
+      try {
+        await carService.update('ID_INVALID', validUpdatedCar);
+      } catch (error:any) {
+        invalidId = error;
+      }
+
+      expect(invalidId).not.to.be.undefined; 
+    });
+
+    it('Should throw an error if "payload" miss any field required to updated', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(false);
+      let invalidField;
+      try {
+        await carService.update('ID_INVALID', {});
+      } catch (error:any) {
+        invalidField = error;
+      }
+
+      expect(invalidField).not.to.be.undefined; 
     });
   });
 });
