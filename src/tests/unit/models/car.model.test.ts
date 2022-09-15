@@ -9,6 +9,8 @@ import CarModel from '../../../models/Car.model';
 import {
   validCar,
   carWithId,
+  updatedCarWithId,
+  updatedCar,
 } from '../../mocks/carMock';
 
 // External methods mocked
@@ -49,6 +51,22 @@ describe('Testing CarModel', () => {
       sinon.stub(Model, 'findById').resolves(null)
       const carNotFound = await carModel.readOne('ID_NOT_FOUND');
       expect(carNotFound).to.be.null;
+    });
+  });
+
+  describe('When using model to update a car by its "ID"', () => {
+    it('Should return the car with the data updated when the id is found', async () => {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(updatedCarWithId);
+
+      const carUpdated = await carModel.update('4edd40c86762e0fb12000003', updatedCar);
+      expect(carUpdated).to.be.deep.equal(updatedCarWithId);
+    });
+
+    it('Should return null if the id of the car is not found', async () => {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
+
+      const carUpdated = await carModel.update('ID_NOT_FOUND', updatedCar);
+      expect(carUpdated).to.be.null;
     });
   });
 });
