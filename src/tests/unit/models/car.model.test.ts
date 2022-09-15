@@ -39,16 +39,14 @@ describe('Testing CarModel', () => {
   });
 
   describe('When using model to get a car by its "ID"', () => {
-    sinon.stub(Model, 'findById')
-      .onCall(1).resolves(carWithId)
-      .onCall(2).resolves(null);
-
     it('Should return the car data when the id is found', async () => {
+      sinon.stub(Model, 'findById').resolves(carWithId)
       const carFound = await carModel.readOne('ID_FOUND');
       expect(carFound).to.be.deep.equal(carWithId);
     });
 
-    it('Should return "null" when the "ID" is\'nt found', async () => {
+    it('Should return "null" when the "ID" isn\'t found', async () => {
+      sinon.stub(Model, 'findById').resolves(null)
       const carNotFound = await carModel.readOne('ID_NOT_FOUND');
       expect(carNotFound).to.be.null;
     });
