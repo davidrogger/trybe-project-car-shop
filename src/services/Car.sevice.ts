@@ -5,7 +5,7 @@ import { IModel } from '../interfaces/IModel';
 class CarService implements IService<ICar> {
   constructor(private car:IModel<ICar>) { }
 
-  async create(payload:unknown):Promise<ICar> {
+  public async create(payload:unknown):Promise<ICar> {
     const checkPayload = carZodSchema.safeParse(payload);
     if (!checkPayload.success) {
       throw checkPayload.error;
@@ -14,8 +14,12 @@ class CarService implements IService<ICar> {
     return this.car.create(checkPayload.data);
   }
   
-  async read():Promise<ICar[]> {
+  public async read():Promise<ICar[]> {
     return this.car.read();
+  }
+
+  public async readOne(id:string):Promise<ICar> {
+    return {};
   }
 }
 

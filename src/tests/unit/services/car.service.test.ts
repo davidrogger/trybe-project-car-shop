@@ -13,6 +13,7 @@ import {
 
 // External methods mocked
 import CarModel from '../../../models/Car.model';
+import mongoose from 'mongoose';
 
 describe('Testing CarService', () => {
   afterEach(() => sinon.restore());
@@ -36,6 +37,39 @@ describe('Testing CarService', () => {
 
       const listCars = await carService.read();
       expect(listCars).to.be.deep.equal([carWithId]);
+    });
+  });
+
+  describe('When using service to get a car by its "ID"', () => {
+    it('Should return the car if found', async () => {
+      sinon.stub(carModel, 'readOne').resolves(carWithId);
+
+      const carFound = await carService.readOne('ID_FOUND');
+      expect(carFound).to.be.deep.equal(carWithId);
+    });
+
+    it('Should throw an error if not found', async () => {
+      sinon.stub(carModel, 'readOne').resolves(null);
+      let carNotFound;
+      try {
+        await carService.readOne('ID_NOT_FOUND');        
+      } catch (error) {
+        carNotFound = error;
+      }
+
+      expect(carNotFound).not.to.be.undefined;      
+    });
+
+    it('Should throw an error if the is invalid', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(false);
+      let invalidId;
+      try {
+        await carService.readOne('ID_NOT_FOUND');        
+      } catch (error) {
+        invalidId = error;
+      }
+
+      expect(invalidId).not.to.be.undefined; 
     });
   });
 });
