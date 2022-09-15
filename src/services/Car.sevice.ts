@@ -1,3 +1,4 @@
+import { isValidObjectId } from 'mongoose';
 import { carZodSchema, ICar } from '../interfaces/ICar';
 import IService from '../interfaces/IService';
 import { IModel } from '../interfaces/IModel';
@@ -19,7 +20,13 @@ class CarService implements IService<ICar> {
   }
 
   public async readOne(id:string):Promise<ICar> {
-    return {};
+    if (!isValidObjectId(id)) throw new Error('invalidId');
+
+    const carFound = await this.car.readOne(id);
+
+    if (!carFound) throw new Error('NotFoundId');
+
+    return carFound;
   }
 }
 
