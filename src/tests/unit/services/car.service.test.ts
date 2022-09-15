@@ -42,6 +42,7 @@ describe('Testing CarService', () => {
 
   describe('When using service to get a car by its "ID"', () => {
     it('Should return the car if found', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(true);
       sinon.stub(carModel, 'readOne').resolves(carWithId);
 
       const carFound = await carService.readOne('ID_FOUND');
@@ -49,23 +50,24 @@ describe('Testing CarService', () => {
     });
 
     it('Should throw an error if not found', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(true);
       sinon.stub(carModel, 'readOne').resolves(null);
       let carNotFound;
       try {
-        await carService.readOne('ID_NOT_FOUND');        
-      } catch (error) {
+        await carService.readOne('ID_NOT_FOUND');
+      } catch (error:any) {
         carNotFound = error;
       }
 
-      expect(carNotFound).not.to.be.undefined;      
+      expect(carNotFound).not.to.be.undefined;
     });
 
     it('Should throw an error if the is invalid', async () => {
       sinon.stub(mongoose, 'isValidObjectId').returns(false);
       let invalidId;
       try {
-        await carService.readOne('ID_NOT_FOUND');        
-      } catch (error) {
+        await carService.readOne('ID_INVALID');
+      } catch (error:any) {
         invalidId = error;
       }
 
