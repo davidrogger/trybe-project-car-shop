@@ -14,6 +14,10 @@ class CarController {
     const listCar = await this.service.read();
     return res.status(200).json(listCar);
   }
+
+  async readOne(req: Request, res: Response<ICar>) {
+    return res.send({ message: 'not implemented' });
+  }
 }
 
 export default CarController;

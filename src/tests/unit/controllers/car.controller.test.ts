@@ -52,4 +52,15 @@ describe('Testing CarController', () => {
       expect((response.json  as sinon.SinonStub).calledWith([carWithId])).to.be.true;
     });
   });
+
+  describe('When requesting to get a car by its "ID"', () => {
+    it('Should return a car with a response 200', async () => {
+      sinon.stub(carService, 'readOne').resolves(carWithId)
+      request.params = { id: '4edd40c86762e0fb12000003' };
+
+      await carController.readOne(request, response);
+      expect((response.status  as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((response.json  as sinon.SinonStub).calledWith(carWithId)).to.be.true;
+    });
+  });
 });
