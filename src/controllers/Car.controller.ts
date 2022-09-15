@@ -16,7 +16,8 @@ class CarController {
   }
 
   async readOne(req: Request, res: Response<ICar>) {
-    return res.send({ message: 'not implemented' });
+    const car = await this.service.readOne(req.params.id);
+    res.status(200).json(car);
   }
 }
 
