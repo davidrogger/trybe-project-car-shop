@@ -1,5 +1,4 @@
-import { Model } from 'mongoose';
-import { ICar } from '../interfaces/ICar';
+import { Model, UpdateQuery } from 'mongoose';
 import { IModel } from '../interfaces/IModel';
 
 class MongoModel<T> implements IModel<T> {
@@ -20,11 +19,20 @@ class MongoModel<T> implements IModel<T> {
 
   public async readOne(id: string): Promise<T | null> {
     const car = await this.model.findById(id);
+
+    if (!car) return null;
     return car;
   }
 
   public async update(id: string, payload: T): Promise<T | null> {
-    return {};
+    const updated = await this.model.findByIdAndUpdate(
+      { _id: id },
+      payload as UpdateQuery<T>,
+      { new: true },
+    );
+
+    if (!updated) return null;
+    return updated;
   }
 }
 
