@@ -9,12 +9,14 @@ import CarController from '../../../controllers/Car.controller';
 import {
   validCar,
   carWithId,
+  updatedCarWithId,
 } from '../../mocks/carMock';
 
 // External methods mocked
 import CarModel from '../../../models/Car.model';
 import CarService from '../../../services/Car.sevice';
 import { Request, Response } from 'express';
+import { updatedCar } from '../../../../__tests__/utils/CarsMock';
 
 describe('Testing CarController', () => {
   afterEach(() => sinon.restore());
@@ -61,6 +63,18 @@ describe('Testing CarController', () => {
       await carController.readOne(request, response);
       expect((response.status  as sinon.SinonStub).calledWith(200)).to.be.true;
       expect((response.json  as sinon.SinonStub).calledWith(carWithId)).to.be.true;
+    });
+  });
+
+  describe('When requesting to update a car by its "ID"', () => {
+    it('Should return a car updated with a response 200', async () => {
+      sinon.stub(carService, 'update').resolves(updatedCar)
+      request.params = { id: '4edd40c86762e0fb12000003' };
+      request.body = updatedCar;
+
+      await carController.update(request, response);
+      expect((response.status  as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((response.json  as sinon.SinonStub).calledWith(updatedCarWithId)).to.be.true;
     });
   });
 });
