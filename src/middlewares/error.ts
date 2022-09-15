@@ -7,9 +7,9 @@ const errorHandler:ErrorRequestHandler = (err: Error | ZodError, _req, res: Resp
 
   const messageAsErrorType = err.message as ErrorTypes;
 
-  const { httpStatus } = errorCatalog[messageAsErrorType];
+  const { httpStatus, ...info } = errorCatalog[messageAsErrorType];
 
-  return res.status(httpStatus || 500).json({ message: err.message });
+  return res.status(httpStatus || 500).json({ ...info });
 };
 
 export default errorHandler;

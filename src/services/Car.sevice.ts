@@ -24,7 +24,7 @@ class CarService implements IService<ICar> {
 
     const carFound = await this.car.readOne(id);
 
-    if (!carFound) throw new Error('NotFoundId');
+    if (!carFound) throw new Error('NotFound');
 
     return carFound;
   }

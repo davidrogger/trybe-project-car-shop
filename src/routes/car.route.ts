@@ -8,6 +8,7 @@ const carMongooseModel = new CarModel();
 const carService = new CarService(carMongooseModel);
 const carController = new CarController(carService);
 
+route.get('/:id', (req, res) => carController.readOne(req, res));
 route.post('/', (req, res) => carController.create(req, res));
 route.get('/', (req, res) => carController.read(req, res));
 
