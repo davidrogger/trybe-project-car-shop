@@ -2,15 +2,18 @@ import { model as mongooseModel, Schema } from 'mongoose';
 import MongoModel from './Mongo.model';
 import { ICar } from '../interfaces/ICar';
 
-const carMongooseSchema = new Schema<ICar>({
-  model: String,
-  year: Number,
-  color: String,
-  status: Boolean,
-  buyValue: Number,
-  doorsQty: Number,
-  seatsQty: Number,
-});
+const carMongooseSchema = new Schema<ICar>(
+  {
+    model: String,
+    year: Number,
+    color: String,
+    status: Boolean,
+    buyValue: Number,
+    doorsQty: Number,
+    seatsQty: Number,
+  },
+  { versionKey: false },
+);
 
 class CarModel extends MongoModel<ICar> {
   constructor() {

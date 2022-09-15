@@ -14,7 +14,7 @@ class MongoModel<T> implements IModel<T> {
   }
 
   public async read():Promise<T[]> {
-    return this.model.find().select({ __v: false });
+    return this.model.find();
   }
 }
 
