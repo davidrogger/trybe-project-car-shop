@@ -42,6 +42,10 @@ class CarService implements IService<ICar> {
 
     return updated;
   }
+
+  public async delete(id: string): Promise<void> {
+    
+  }
 }
 
 export default CarService;

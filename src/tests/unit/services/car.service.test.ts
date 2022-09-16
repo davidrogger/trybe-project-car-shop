@@ -128,4 +128,26 @@ describe('Testing CarService', () => {
       expect(invalidField).not.to.be.undefined; 
     });
   });
+
+  describe('When using service to delete a car by its "ID"', () => {
+    it('Shouldn\'t return nothing when success', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(true);
+      sinon.stub(carModel, 'delete').resolves(updatedCarWithId);
+
+      const carDeleted = await carService.delete('ID_FOUND');
+      expect(carDeleted).to.be.undefined;
+    });
+
+    it('Should throw an error if the "ID" is invalid', async () => {
+      sinon.stub(mongoose, 'isValidObjectId').returns(false);
+      let invalidId;
+      try {
+        await carService.delete('ID_INVALID');
+      } catch (error:any) {
+        invalidId = error;
+      }
+
+      expect(invalidId).not.to.be.undefined; 
+    });
+  });
 });
