@@ -25,11 +25,11 @@ class ShopService<T> implements IService<T> {
   public async readOne(id:string):Promise<T> {
     if (!isValidObjectId(id)) throw new Error('invalidId');
 
-    const carFound = await this.model.readOne(id);
+    const itemFound = await this.model.readOne(id);
 
-    if (!carFound) throw new Error('NotFound');
+    if (!itemFound) throw new Error('NotFound');
 
-    return carFound;
+    return itemFound;
   }
 
   public async update(id:string, payload:unknown):Promise<T> {
