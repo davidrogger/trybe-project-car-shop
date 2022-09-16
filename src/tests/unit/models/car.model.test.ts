@@ -69,4 +69,20 @@ describe('Testing CarModel', () => {
       expect(carUpdated).to.be.null;
     });
   });
+
+  describe('When using model to delete a car by its "ID"', () => {
+    it('Should return the car with the data deleted when the id is found', async () => {
+      sinon.stub(Model, 'findByIdAndDelete').resolves(carWithId);
+
+      const carFound = await carModel.delete('ID_FOUND');
+      expect(carFound).to.be.deep.equal(updatedCarWithId);
+    });
+
+    it('Should return null if the id of the car is not found', async () => {
+      sinon.stub(Model, 'findByIdAndDelete').resolves(null);
+
+      const carNotFound = await carModel.delete('ID_NOT_FOUND');
+      expect(carNotFound).to.be.null;
+    });
+  });
 });

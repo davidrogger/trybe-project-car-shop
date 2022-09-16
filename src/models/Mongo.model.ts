@@ -34,6 +34,10 @@ class MongoModel<T> implements IModel<T> {
     if (!updated) return null;
     return updated;
   }
+
+  public async delete(id: string): Promise<T | null> {
+    
+  }
 }
 
 export default MongoModel;
