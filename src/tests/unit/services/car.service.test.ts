@@ -3,7 +3,7 @@ import chai from 'chai';
 const { expect } = chai;
 
 // test itens
-import CarService from '../../../services/Car.sevice';
+import CarService from '../../../services/Car.service';
 
 // cars Mocked
 import {

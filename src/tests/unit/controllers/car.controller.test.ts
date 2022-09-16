@@ -14,7 +14,7 @@ import {
 
 // External methods mocked
 import CarModel from '../../../models/Car.model';
-import CarService from '../../../services/Car.sevice';
+import CarService from '../../../services/Car.service';
 import { Request, Response } from 'express';
 import { updatedCar } from '../../../../__tests__/utils/CarsMock';
 
