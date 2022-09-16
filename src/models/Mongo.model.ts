@@ -36,7 +36,11 @@ class MongoModel<T> implements IModel<T> {
   }
 
   public async delete(id: string): Promise<T | null> {
-    
+    const carFound = await this.model.findByIdAndDelete(id);
+
+    if (!carFound) return null;
+
+    return carFound;
   }
 }
 
