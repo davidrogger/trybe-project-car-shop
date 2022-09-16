@@ -135,7 +135,7 @@ describe('Testing CarService', () => {
       sinon.stub(carModel, 'delete').resolves(updatedCarWithId);
 
       const carDeleted = await carService.delete('ID_FOUND');
-      expect(carDeleted).to.be.undefined;
+      expect(carDeleted.message).to.be.equal('ID_FOUND deleted with success!');
     });
 
     it('Should throw an error if the "ID" is invalid', async () => {
