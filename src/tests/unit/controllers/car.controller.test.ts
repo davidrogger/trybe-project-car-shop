@@ -83,7 +83,7 @@ describe('Testing CarController', () => {
       sinon.stub(carService, 'delete').resolves();
       request.params = { id: '4edd40c86762e0fb12000003' };
 
-      await carController.update(request, response);
+      await carController.delete(request, response);
       expect((response.status  as sinon.SinonStub).calledWith(204)).to.be.true;
     });
   });
