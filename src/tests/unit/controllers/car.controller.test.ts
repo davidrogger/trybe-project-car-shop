@@ -77,4 +77,14 @@ describe('Testing CarController', () => {
       expect((response.json  as sinon.SinonStub).calledWith(updatedCarWithId)).to.be.true;
     });
   });
+
+  describe('When requesting to delete a car by its "ID"', () => {
+    it('Should response 204', async () => {
+      sinon.stub(carService, 'delete').resolves();
+      request.params = { id: '4edd40c86762e0fb12000003' };
+
+      await carController.update(request, response);
+      expect((response.status  as sinon.SinonStub).calledWith(204)).to.be.true;
+    });
+  });
 });
