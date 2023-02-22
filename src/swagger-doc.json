@@ -4,6 +4,78 @@
     "title": "Project Car Shop",
     "description": "API usando banco de dados NoSQL MongoDB, construindo para prática de orientação a objetos com typescript."
   },
-  "paths": {},
-  "components": {}
+  "paths": {
+    "/cars": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para cadastro de carros.",
+        "description": "Rota responsável por cadastrar novos carros ao banco.",
+        "requestBody": {
+          "required": true,
+          "description": "Para caradastrar um novo carro é necessário enviar um corpo json válido com `model`, `year`, `color`, `status`, `buyValue`, `doorsQty` e `seatsQty`",
+          "content": {
+            "application/json": {
+              "schemas": {
+                "$ref": "#/components/schemas/NewCarBody"
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VehicleBody": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "required": true,
+            "type": "string",
+            "description": "Deve ter no mínimo 3 caracteres.",
+            "example": "Toyota Corolla DX"
+          },
+          "year": {
+            "required": true,
+            "type": "number",
+            "description": "Deve estar entre 1900 e 2022.",
+            "example": 1994
+          },
+          "color": {
+            "required": true,
+            "type": "string",
+            "description": "Deve ter no mínimo 3 caracteres.",
+            "example": "Prata"
+          },
+          "status": {
+            "required": false,
+            "type": "string",
+            "description": "Campo opcional, contendo um booleano, define se o veículo pode ser comprado ou não.",
+            "example": true
+          },
+          "buyValue": {
+            "required": true,
+            "type": "number",
+            "description": "Deve ser um valor positivo.",
+            "example": 104500
+          }
+        }
+      },
+      "NewCarBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Vehicle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "doorsQty": {},
+              "seatQy": {}
+            }
+          }
+        ]
+      }
+    }
+  }
 }
