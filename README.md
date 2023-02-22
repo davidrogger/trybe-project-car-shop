@@ -58,7 +58,29 @@
   ### Requisitos
   *Nome* | *Avaliação*
   --- | :---:
-  1 - lore | :heavy_check_mark:
+  01 - Crie a interface genérica IModel | :heavy_check_mark:
+  02 - Crie a interface IVehicle | :heavy_check_mark:
+  03 - Crie a interface ICar a partir da interface IVehicle | :heavy_check_mark:
+  04 - Crie uma rota para o endpoint /cars onde seja possível cadastrar um novo carro | :heavy_multiplication_x:
+  05 - Escreva testes para cobrir 15% da camada de Model | :heavy_multiplication_x:
+  06 - Escreva testes para cobrir 15% da camada de Service | :heavy_multiplication_x:
+  07 - Escreva testes para cobrir 15% da camada de Controller | :heavy_multiplication_x:
+  08 - Crie uma rota para o endpoint /cars onde seja possível listar todos os carros registrados | :heavy_multiplication_x:
+  09 - Crie uma rota para o endpoint /cars/id onde seja possível listar um único carro através do seu id | :heavy_multiplication_x:
+  10 - Escreva testes para cobrir 30% da camada de Model | :heavy_multiplication_x:
+  11 - Escreva testes para cobrir 30% da camada de Service | :heavy_multiplication_x:
+  12 - Escreva testes para cobrir 30% da camada de Controller | :heavy_multiplication_x:
+  13 - Crie uma rota para o endpoint /cars/id, onde é possível atualizar o registro de um carro através do seu id | :heavy_multiplication_x:
+  14 - Escreva testes para cobrir 60% da camada de Model | :heavy_multiplication_x:
+  15 - Escreva testes para cobrir 60% da camada de Service | :heavy_multiplication_x:
+  16 - Escreva testes para cobrir 60% da camada de Controller | :heavy_multiplication_x:
+  17 - Crie uma rota para o endpoint /cars/id para excluir os registros de um carro | :heavy_multiplication_x:
+  18 - Crie a interface IMotorcycle a partir da interface IVehicle | :heavy_multiplication_x:
+  19 - Crie uma rota para o endpoint /motorcycles onde seja possível cadastrar uma nova moto | :heavy_multiplication_x:
+  20 - Crie uma rota para o endpoint /motorcycles onde seja possível listar todas as motos registradas | :heavy_multiplication_x:
+  21 - Crie uma rota para o endpoint /motorcycles/id onde seja possível listar uma única moto através do seu id | :heavy_multiplication_x:
+  22 - Crie uma rota para o endpoint /motorcycles/id onde é possível atualizar o registro de uma moto através do seu id | :heavy_multiplication_x:
+  23 - Crie uma rota para o endpoint /motorcycles/id para excluir os registros de uma moto | :heavy_multiplication_x:
 
 
 
