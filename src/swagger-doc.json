@@ -1,0 +1,9 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Project Car Shop",
+    "description": "API usando banco de dados NoSQL MongoDB, construindo para prática de orientação a objetos com typescript."
+  },
+  "paths": {},
+  "components": {}
+}
