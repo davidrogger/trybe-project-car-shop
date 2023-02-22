@@ -2,7 +2,7 @@
 
 ## Seção: `APIs OO e NoSQL`
 
-- lore
+- Ao contrário do MySQL que usamos um driver e depois usamos ORM, lidando com NoSQL ja foi abordado diretamente algo similar a ORM, no caso ODM que lida com dados estruturados em bandos NoSQL, apresentando o mongoose, configurações e o uso com orientação a objetos, validando dados usando o Zod.
 
 #
 <div align="center">
@@ -21,7 +21,7 @@
 #
 ## Projeto: `Car Shop`
 
-- lore
+- Uma API com banco NoSQL...
 
 # Tecnologias e ferramentas usadas 🛠
 
@@ -39,7 +39,11 @@
 
 # Desafios
 
-- lore
+- Aplicar conhecimentos de Orientação a Objetos;
+- Utilização de Composição;
+- Criação e utilização de Interfaces;
+- Implementar classes, instâncias, atributos, métodos e objetos;
+- Usar os conhecimentos de MongoBD, Typescript e POO na criação do CRUD da API.
 
 # Conclusão
 
