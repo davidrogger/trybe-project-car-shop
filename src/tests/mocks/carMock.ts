@@ -32,3 +32,12 @@ export const zodParsedMock = {
   success: false,
   data: {},
 }
+
+export const updatedCar = {
+  model: 'Uno da Escada',
+  year: 1966,
+  color: 'blue',
+  buyValue: 3500,
+  seatsQty: 2,
+  doorsQty: 2
+};
