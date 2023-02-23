@@ -198,6 +198,35 @@
   > - **`404`**: Retorna um json com messagem de `Object not found`.
   > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
 
+  ## PUT - `localhost:3001/cars/:id`
+
+  > - Rota responsável atualizar cadastro de um carro.
+  > - Para realizar a atualização, é necessário realizar uma requisição PUT para URL: `localhost:3001/cars/:id` com o ID do carro desejado contendo um corpo json com as atualizações desejadas:
+  > - `model` Deve conter no mínimo 3 caracteres, com o modelo do carro.
+  > - `year` Deve estrar em 1900 e 2022, com o ano do carro.
+  > - `color` Deve ter no mínimo 3 caracteres, com a cor do carro.
+  > - `status` Opcional, Deve ser um boolean, definindo se o cara está apto para venda.
+  > - `buyValue` Deve ser um valor positivo, com o preço de venda do carro.
+  > - `doorsQty` Deve ser um número entre 2 e 4, com a quantidade de portas do carro.
+  > - `seatsQty` Deve ser um número entre 2 e 7, com a quantidade de assentos no carro.
+    > ### Exemplo:
+  >```
+  >{
+  >  "model": "Toyota Corolla DX",
+  >  "year": 1994,
+  >  "color": "Prata",
+  >  "status": true,
+  >  "buyValue": 104500,
+  >  "doorsQty": 4,
+  >  "seatsQty": 5
+  >}
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com as atualizações realizadas.
+  > - **`400`**: Retorna um json com a falha de requisição ocorrida, apontando o local do erro.
+  > - **`404`**: Retorna um json com messagem de `Object not found`.
+  > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
+
   </details>
 
   <details>

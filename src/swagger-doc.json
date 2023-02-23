@@ -77,6 +77,45 @@
             "description": "Falha interna com o servidor."
           }
         }
+      },
+      "put": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para atualização de cadastro por id.",
+        "description": "Rota responsável por atualizar informações de cadastro de um carro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Para atualizar as informações do carro, deve-se enviar um corpo json válido com os campos obrigatórios, `model`, `year`, `color`, `buyValue`, `doorsQty` e `seatsQty`",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCarBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Atualização realizada com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID ou campos do corpo fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
       }
     }
   },
