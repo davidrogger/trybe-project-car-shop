@@ -47,6 +47,37 @@
           }
         }
       }
+    },
+    "/cars/{id}": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Endpoint mostra detalhes de um carro por seu id.",
+        "description": "Rota responsável por buscar um carro por seu id, e mostrar seus detalhes de cadastro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      }
     }
   },
   "components": {
