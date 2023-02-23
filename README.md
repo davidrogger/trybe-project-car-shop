@@ -244,7 +244,8 @@
       <span>Endpoint <code>/motorcycles</code></span>
   </summary>
 
-  >## Segue exatamente os mesmos endpoints de cars, mudando somente o nome do endpoint para motorcycle, e quando lidando com envio de um corpo json é substituido seus campos `doorsQty` e `seatsQty` por, `category` e `engineCapacity`.
+  >## ⚠️ Obserção:
+  > Segue exatamente os mesmos endpoints de cars, mudando somente o nome do endpoint para motorcycles, e quando lidando com envio de um corpo json é substituido seus campos `doorsQty` e `seatsQty` por, `category` e `engineCapacity`.
 
   ## POST - `localhost:3000/motorcycles`
 
@@ -283,5 +284,5 @@
 #
 
 <div align="right">
-  <img src="https://badgen.net/badge/last%20update/22-02-2023/blue">
+  <img src="https://badgen.net/badge/last%20update/23-02-2023/blue">
 </div>
