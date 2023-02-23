@@ -97,7 +97,7 @@
     </strong>
   </summary>
 
-  - [x] - ~~Criar aplicação com base nos requisitos da trybe.~~ ![data](https://badgen.net/badge/delivery/30-07-2022/green)
+  - [x] - ~~Criar aplicação com base nos requisitos da trybe.~~ ![data](https://badgen.net/badge/delivery/16-09-2022/green)
 
 </details>
 
