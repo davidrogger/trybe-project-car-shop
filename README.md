@@ -21,7 +21,7 @@
 #
 ## Projeto: `Car Shop`
 
-- Uma API ...
+- Uma API Restful seguindo modelo de orientação a objetos com um CRUD para rotas de carros e motos.
 
 # Tecnologias e ferramentas usadas 🛠
 
@@ -47,7 +47,7 @@
 
 # Conclusão
 
-- lore
+- Foi o projeto mais "fino" que desenvolvi na trybe, onde abordei bastante a ideia de não acoplamento com as classes, gerando uma classe genérica, que foi possivel "reaproveitar" em duas rotas distintas, com resultados similares,  aplicando na classe um schema diferente na para cada rota, gerando as modificações necessárias, ainda assim infelizmente mantive o zod acoplado, mas nada evita de criar um interface generica, que usaria os metodos do zod, para caso eu quizesse usar um joi, criando um adapter onde sigo uma assinatura padrão, e realizo as autenticação seja com zod, joi, ou qualquer outra forma de validação.
 
 </details>
 
