@@ -244,9 +244,35 @@
       <span>Endpoint <code>/motorcycles</code></span>
   </summary>
 
+  Segue exatamente os mesmos endpoints de cars, mudando somente o nome do endpoint para motorcycle, e quando lidando com envio de um corpo json é substituido seus campos `doorsQty` e `seatsQty` por, `category` e `engineCapacity`.
+
   ## POST - `localhost:3000/motorcycles`
 
-
+  > - Rota responsável cadastrar motos.
+  > - Para cadastrar a moto, é necessário realizar uma requisição POST para URL: `localhost:3001/motorcycle` contendo um corpo json com:
+  > - `model` Deve conter no mínimo 3 caracteres, com o modelo do carro.
+  > - `year` Deve estrar em 1900 e 2022, com o ano do carro.
+  > - `color` Deve ter no mínimo 3 caracteres, com a cor do carro.
+  > - `status` Opcional, Deve ser um boolean, definindo se o cara está apto para venda.
+  > - `buyValue` Deve ser um valor positivo, com o preço de venda do carro.
+  > - `category` Deve ser uma das três opções, `Street`, `Custom` ou `Trail`.
+  > - `engineCapacity` Deve ser um número positivo, até 2500.
+    > ### Exemplo:
+  >```
+  >{
+  >  "model": "Toyota Corolla DX",
+  >  "year": 1994,
+  >  "color": "Prata",
+  >  "status": true,
+  >  "buyValue": 104500,
+  >  "category": 4,
+  >  "engineCapacity": 1000
+  >}
+  >```
+  > ### Status:
+  > - **`201`**: Retorna um json com os dados da partida cadastrada.
+  > - **`400`**: Retorna um json com a mensagem apontando preenchimento está incorreto.
+  > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
 
   </details>
 
