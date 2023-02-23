@@ -116,6 +116,35 @@
             "description": "Falha interna com o servidor."
           }
         }
+      },
+      "delete": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para deletar um carro por seu id.",
+        "description": "Rota responsável por deletar cadastro de carro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Cadastro deletado com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
       }
     }
   },

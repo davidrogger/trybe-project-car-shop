@@ -227,6 +227,16 @@
   > - **`404`**: Retorna um json com messagem de `Object not found`.
   > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
 
+  # DELETE - localhost:3001/cars/:id
+
+  > - Rota responsável deletar um cadastro de carro por seu id.
+  > - Para deletar, é necessário realizar uma requisição DELETE para URL: `localhost:3001/cars/id`.
+  > ### Status:
+  > - **`204`**: Retorna status 204 no content.
+  > - **`400`**: Retorna um json com a falha de requisição ocorrida, normalmente pelo formato incorreto do id.
+  > - **`404`**: Retorna um json com messagem de `Object not found`.
+  > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
+
   </details>
 
   <details>
