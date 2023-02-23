@@ -152,7 +152,7 @@
       <span>Endpoint <code>/cars</code></span>
   </summary>
 
-  ## POST - `localhost:3000/cars`
+  ## POST - `localhost:3001/cars`
 
   > - Rota responsável cadastrar novos carros.
   > - Para cadastrar o carro, é necessário realizar uma requisição POST para URL: `localhost:3001/cars` contendo um corpo json com:
@@ -180,14 +180,22 @@
   > - **`400`**: Retorna um json com a mensagem apontando preenchimento está incorreto.
   > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
 
+  # GET - localhost:3001/cars
+
+  > - Rota responsável mostrar todos carros cadastrados.
+  > - Para mostrar as partidas, é necessário realizar uma requisição GET para URL: `localhost:3001/cars`.
+  > ### Status:
+  > - **`200`**: Retorna um json com todos carros cadastrados.
+  > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
+
   </details>
 
   <details>
   <summary>
-      <span>Endpoint <code>/cars</code></span>
+      <span>Endpoint <code>/motorcycles</code></span>
   </summary>
 
-  ## POST - `localhost:3000/cars`
+  ## POST - `localhost:3000/motorcycles`
 
 
 

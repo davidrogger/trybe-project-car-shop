@@ -33,6 +33,19 @@
             "description": "Falha interna com o servidor."
           }
         }
+      },
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para mostrar carros cadastrados.",
+        "description": "Rota responsável por mostrar todos carros cadastrados.",
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
       }
     }
   },
