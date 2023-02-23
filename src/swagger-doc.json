@@ -1,0 +1,406 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Project Car Shop",
+    "description": "API usando banco de dados NoSQL MongoDB, construindo para prática de orientação a objetos com typescript.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/cars": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para cadastro de carros.",
+        "description": "Rota responsável por cadastrar novos carros ao banco.",
+        "requestBody": {
+          "required": true,
+          "description": "Para caradastrar um novo carro é necessário enviar um corpo json válido com `model`, `year`, `color`, `buyValue`, `doorsQty` e `seatsQty`",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCarBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cadastro realizado com sucesso."
+          },
+          "400": {
+            "description": "Ausência do campo obrigatório ou fora padrão especificado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para mostrar carros cadastrados.",
+        "description": "Rota responsável por mostrar todos carros cadastrados.",
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Endpoint mostra detalhes de um carro por seu id.",
+        "description": "Rota responsável por buscar um carro por seu id, e mostrar seus detalhes de cadastro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para atualização de cadastro por id.",
+        "description": "Rota responsável por atualizar informações de cadastro de um carro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Para atualizar as informações do carro, deve-se enviar um corpo json válido com os campos obrigatórios, `model`, `year`, `color`, `buyValue`, `doorsQty` e `seatsQty`",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCarBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Atualização realizada com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID ou campos do corpo fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cars"],
+        "summary": "Endpoint para deletar um carro por seu id.",
+        "description": "Rota responsável por deletar cadastro de carro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Cadastro deletado com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      }
+    },
+    "/motorcycles": {
+      "post": {
+        "tags": ["Motorcycles"],
+        "summary": "Endpoint para cadastro da moto.",
+        "description": "Rota responsável por cadastrar novas motos ao banco.",
+        "requestBody": {
+          "required": true,
+          "description": "Para caradastrar uma novo moto é necessário enviar um corpo json válido com `model`, `year`, `color`, `buyValue`, `category` e `engineCapacity`",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewMotorBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cadastro realizado com sucesso."
+          },
+          "400": {
+            "description": "Ausência do campo obrigatório ou fora padrão especificado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Motorcycles"],
+        "summary": "Endpoint para mostrar motos cadastradas.",
+        "description": "Rota responsável por mostrar todas motos cadastradas.",
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      }
+    },
+    "/motorcycles/{id}": {
+      "get": {
+        "tags": ["Motorcycles"],
+        "summary": "Endpoint mostra detalhes de uma moto por seu id.",
+        "description": "Rota responsável por buscar uma moto por seu id, e mostrar seus detalhes de cadastro.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Motorcycles"],
+        "summary": "Endpoint para atualização de cadastro por id.",
+        "description": "Rota responsável por atualizar informações de cadastro de uma moto.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Para atualizar as informações do carro, deve-se enviar um corpo json válido com os campos obrigatórios, `model`, `year`, `color`, `buyValue`, `category` e `engineCapacity`",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewMotorBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Atualização realizada com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID ou campos do corpo fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Motorcycles"],
+        "summary": "Endpoint para deletar uma moto por seu id.",
+        "description": "Rota responsável por deletar cadastro de uma moto.",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Cadastro deletado com sucesso."
+          },
+          "400": {
+            "description": "Parametro ID fora do padrão esperado."
+          },
+          "404": {
+            "description": "ID não encontrado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VehicleBody": {
+        "type": "object",
+        "required": ["model", "year", "color", "buyValue"],
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Deve ter no mínimo 3 caracteres."
+          },
+          "year": {
+            "type": "number",
+            "description": "Deve estar entre 1900 e 2022."
+          },
+          "color": {
+            "type": "string",
+            "description": "Deve ter no mínimo 3 caracteres."
+          },
+          "status": {
+            "type": "string",
+            "description": "Campo opcional, contendo um booleano, define se o veículo pode ser comprado ou não."
+          },
+          "buyValue": {
+            "type": "number",
+            "description": "Deve ser um valor positivo."
+          }
+        }
+      },
+      "NewCarBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/VehicleBody"
+          },
+          {
+            "properties": {
+              "model": {
+                "example": "Toyota Corolla DX"
+              },
+              "year": {
+                "example": 1994
+              },
+              "color": {
+                "example": "Prata"
+              },
+              "status": {
+                "example": true
+              },
+              "buyValue": {
+                "example": 104500
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": ["doorsQty", "seatsQty"],
+            "properties": {
+              "doorsQty": {
+                "type": "number",
+                "description": "Deve ser um número entre 2 e 4.",
+                "example": 4
+              },
+              "seatsQty": {
+                "type": "number",
+                "description": "Deve ser um número entre 2 e 7.",
+                "example": 5
+              }
+            }
+          }
+        ]
+      },
+      "NewMotorBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/VehicleBody"
+          },
+          {
+            "properties": {
+              "model": {
+                "example": "Ninja ZX-10R"
+              },
+              "year": {
+                "example": 2004
+              },
+              "color": {
+                "example": "Metálico"
+              },
+              "status": {
+                "example": false
+              },
+              "buyValue": {
+                "example": 31000
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": ["category", "engineCapacity"],
+            "properties": {
+              "category": {
+                "type": "string",
+                "description": "Deve ter uma das três categorias, `Street`, `Custom` ou `Trail`.",
+                "example": "Street"
+              },
+              "engineCapacity": {
+                "type": "number",
+                "description": "Deve ser um número positivo até 2500.",
+                "example": 998
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@ import {
 import CarModel from '../../../models/Car.model';
 import CarService from '../../../services/Car.service';
 import { Request, Response } from 'express';
-import { updatedCar } from '../../../../__tests__/utils/CarsMock';
+import { updatedCar } from '../../mocks/carMock';
 
 describe('Testing CarController', () => {
   afterEach(() => sinon.restore());
