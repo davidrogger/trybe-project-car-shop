@@ -152,7 +152,44 @@
       <span>Endpoint <code>/cars</code></span>
   </summary>
 
-  ## POST - `localhost:3000/orders`
+  ## POST - `localhost:3000/cars`
+
+  > - Rota responsável cadastrar novos carros.
+  > - Para cadastrar o carro, é necessário realizar uma requisição POST para URL: `localhost:3001/cars` contendo um corpo json com:
+  > - `model` Deve conter no mínimo 3 caracteres, com o modelo do carro.
+  > - `year` Deve estrar em 1900 e 2022, com o ano do carro.
+  > - `color` Deve ter no mínimo 3 caracteres, com a cor do carro.
+  > - `status` Opcional, Deve ser um boolean, definindo se o cara está apto para venda.
+  > - `buyValue` Deve ser um valor positivo, com o preço de venda do carro.
+  > - `doorsQty` Deve ser um número entre 2 e 4, com a quantidade de portas do carro.
+  > - `seatsQty` Deve ser um número entre 2 e 7, com a quantidade de assentos no carro.
+    > ### Exemplo:
+  >```
+  >{
+  >  "model": "Toyota Corolla DX",
+  >  "year": 1994,
+  >  "color": "Prata",
+  >  "status": true,
+  >  "buyValue": 104500,
+  >  "doorsQty": 4,
+  >  "seatsQty": 5
+  >}
+  >```
+  > ### Status:
+  > - **`201`**: Retorna um json com os dados da partida cadastrada.
+  > - **`400`**: Retorna um json com a mensagem apontando preenchimento está incorreto.
+  > - **`500`**: Retorna um json com a mensagem indicando o error que ocorreu internamente no servidor.
+
+  </details>
+
+  <details>
+  <summary>
+      <span>Endpoint <code>/cars</code></span>
+  </summary>
+
+  ## POST - `localhost:3000/cars`
+
+
 
   </details>
 

@@ -2,7 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Project Car Shop",
-    "description": "API usando banco de dados NoSQL MongoDB, construindo para prática de orientação a objetos com typescript."
+    "description": "API usando banco de dados NoSQL MongoDB, construindo para prática de orientação a objetos com typescript.",
+    "version": "1.0.0"
   },
   "paths": {
     "/cars": {
@@ -12,16 +13,26 @@
         "description": "Rota responsável por cadastrar novos carros ao banco.",
         "requestBody": {
           "required": true,
-          "description": "Para caradastrar um novo carro é necessário enviar um corpo json válido com `model`, `year`, `color`, `status`, `buyValue`, `doorsQty` e `seatsQty`",
+          "description": "Para caradastrar um novo carro é necessário enviar um corpo json válido com `model`, `year`, `color`, `buyValue`, `doorsQty` e `seatsQty`",
           "content": {
             "application/json": {
-              "schemas": {
+              "schema": {
                 "$ref": "#/components/schemas/NewCarBody"
               }
             }
           }
         },
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Cadastro realizado com sucesso."
+          },
+          "400": {
+            "description": "Ausência do campo obrigatório ou fora padrão especificado."
+          },
+          "500": {
+            "description": "Falha interna com o servidor."
+          }
+        }
       }
     }
   },
@@ -29,33 +40,29 @@
     "schemas": {
       "VehicleBody": {
         "type": "object",
+        "required": ["model", "year", "color", "buyValue"],
         "properties": {
           "model": {
-            "required": true,
             "type": "string",
             "description": "Deve ter no mínimo 3 caracteres.",
             "example": "Toyota Corolla DX"
           },
           "year": {
-            "required": true,
             "type": "number",
             "description": "Deve estar entre 1900 e 2022.",
             "example": 1994
           },
           "color": {
-            "required": true,
             "type": "string",
             "description": "Deve ter no mínimo 3 caracteres.",
             "example": "Prata"
           },
           "status": {
-            "required": false,
             "type": "string",
             "description": "Campo opcional, contendo um booleano, define se o veículo pode ser comprado ou não.",
             "example": true
           },
           "buyValue": {
-            "required": true,
             "type": "number",
             "description": "Deve ser um valor positivo.",
             "example": 104500
@@ -65,13 +72,22 @@
       "NewCarBody": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Vehicle"
+            "$ref": "#/components/schemas/VehicleBody"
           },
           {
             "type": "object",
+            "required": ["doorsQty", "seatsQty"],
             "properties": {
-              "doorsQty": {},
-              "seatQy": {}
+              "doorsQty": {
+                "type": "number",
+                "description": "Deve ser um número entre 2 e 4.",
+                "example": 4
+              },
+              "seatsQty": {
+                "type": "number",
+                "description": "Deve ser um número entre 2 e 7.",
+                "example": 5
+              }
             }
           }
         ]
