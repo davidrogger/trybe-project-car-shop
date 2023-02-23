@@ -133,7 +133,7 @@
   </summary>
 
   >Após clonar o respositório para iniciar o docker compose, você deve dentro da pasta raiz do projeto usar o comando: `docker-compose up -d`
-  >Verifique os containers, usando o comando `docker ps` no terminal. Deve aparecer dois containers com o nome de *trybesmith* e *trybesmith_db*.
+  >Verifique os containers, usando o comando `docker ps` no terminal. Deve aparecer dois containers com o nome de *car_shop* e *car_shop_db*.
   </details>
 
   <details>
@@ -145,7 +145,7 @@
 
   >Para acessar e testar as rotas:
   >1. Usando algum API Cliente, conforme citado nas configurações mínimas.
-  >2. Acessando a documentação gerada pelo swagger `localhost:3000/api-docs`.
+  >2. Acessando a documentação gerada pelo swagger `localhost:3001/api-docs`.
 
   <details>
   <summary>
