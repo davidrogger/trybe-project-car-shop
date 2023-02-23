@@ -244,7 +244,7 @@
       <span>Endpoint <code>/motorcycles</code></span>
   </summary>
 
-  Segue exatamente os mesmos endpoints de cars, mudando somente o nome do endpoint para motorcycle, e quando lidando com envio de um corpo json é substituido seus campos `doorsQty` e `seatsQty` por, `category` e `engineCapacity`.
+  >## Segue exatamente os mesmos endpoints de cars, mudando somente o nome do endpoint para motorcycle, e quando lidando com envio de um corpo json é substituido seus campos `doorsQty` e `seatsQty` por, `category` e `engineCapacity`.
 
   ## POST - `localhost:3000/motorcycles`
 
